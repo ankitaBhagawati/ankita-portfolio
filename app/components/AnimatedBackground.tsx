@@ -6,9 +6,9 @@ export default function AnimatedBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
+    const canvas = canvasRef.current!;
     if (!canvas) return;
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
     if (!ctx) return;
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -49,11 +49,11 @@ export default function AnimatedBackground() {
       }
     }
 
-function resize() {
-  W = canvas!.width = window.innerWidth;
-  H = canvas!.height = window.innerHeight;
-  build();
-}
+    function resize() {
+      W = canvas.width = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+      build();
+    }
 
     function frame() {
       ctx.clearRect(0, 0, W, H);
