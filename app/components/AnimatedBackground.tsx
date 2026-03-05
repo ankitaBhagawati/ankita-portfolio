@@ -49,11 +49,11 @@ export default function AnimatedBackground() {
       }
     }
 
-    function resize() {
-      W = canvas.width = window.innerWidth;
-      H = canvas.height = window.innerHeight;
-      build();
-    }
+function resize() {
+  W = canvas!.width = window.innerWidth;
+  H = canvas!.height = window.innerHeight;
+  build();
+}
 
     function frame() {
       ctx.clearRect(0, 0, W, H);
