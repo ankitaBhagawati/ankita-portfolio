@@ -20,7 +20,8 @@ export const resume = {
       company: "Numerator",
       role: "Software Engineer",
       period: "Feb 2026 – Present",
-      duration: "2 months",
+      duration: "",            // ← emptied, no longer used for current role
+      startDate: "2026-02-01", // ← new field, used to calculate live duration
       current: true,
       location: "",
       bullets: [
@@ -66,7 +67,7 @@ export const resume = {
   projects: [
         {
       title: "QR Code Generator",
-      date: "feb 2026",
+      date: "Feb 2026",
       association: "",
       description: "Real-time QR code generator from text, URLs, or custom input with instant preview and download.",
       bullets: [
@@ -94,7 +95,7 @@ export const resume = {
     },
     {
       title: "Typing Speed Tester",
-      date: "dec 2025",
+      date: "Dec 2025",
       association: "",
       description: "Measures WPM, accuracy, and errors in real time with timer-based tests and error highlighting.",
       bullets: [

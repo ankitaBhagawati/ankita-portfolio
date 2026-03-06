@@ -7,6 +7,77 @@
 :root {
   --font-display: "Syne";
   --font-body: "DM Sans";
+
+  /* Dark mode defaults */
+  --bg: #060b18;
+  --surface: rgba(255,255,255,0.04);
+  --surface-hover: rgba(255,255,255,0.08);
+  --border: rgba(255,255,255,0.08);
+  --border-hover: rgba(91,143,255,0.32);
+  --text-primary: #e4e8f5;
+  --text-secondary: rgba(255,255,255,0.5);
+  --text-muted: rgba(255,255,255,0.35);
+  --text-body: rgba(255,255,255,0.6);
+  --badge-bg: rgba(255,255,255,0.05);
+  --badge-border: rgba(255,255,255,0.1);
+  --badge-text: rgba(255,255,255,0.5);
+  --impact-bg: rgba(91,143,255,0.06);
+  --impact-border: rgba(91,143,255,0.18);
+  --impact-tag-bg: rgba(255,255,255,0.08);
+  --impact-tag-border: rgba(255,255,255,0.15);
+  --impact-tag-text: rgba(255,255,255,0.8);
+  --metric-bg: rgba(91,143,255,0.12);
+  --metric-border: rgba(91,143,255,0.25);
+  --stack-bg: rgba(91,143,255,0.10);
+  --stack-border: rgba(91,143,255,0.20);
+  --skill-bg: rgba(255,255,255,0.06);
+  --skill-border: rgba(255,255,255,0.10);
+  --skill-text: rgba(255,255,255,0.6);
+  --cert-bg: rgba(255,255,255,0.04);
+  --contact-bg: rgba(91,143,255,0.07);
+  --contact-border: rgba(91,143,255,0.20);
+  --nav-bg: rgba(6,11,24,0.65);
+  --nav-border: rgba(255,255,255,0.08);
+  --nav-link: rgba(255,255,255,0.5);
+  --nav-active-bg: rgba(255,255,255,0.10);
+  --footer-border: rgba(255,255,255,0.08);
+  --footer-text: rgba(255,255,255,0.35);
+}
+
+body.light {
+  --bg: #f0f4ff;
+  --surface: rgba(0,0,0,0.04);
+  --surface-hover: rgba(0,0,0,0.07);
+  --border: rgba(0,0,0,0.09);
+  --border-hover: rgba(91,143,255,0.45);
+  --text-primary: #0d1226;
+  --text-secondary: #3a4060;
+  --text-muted: #6b7090;
+  --text-body: #4a5280;
+  --badge-bg: rgba(0,0,0,0.05);
+  --badge-border: rgba(0,0,0,0.10);
+  --badge-text: #4a5280;
+  --impact-bg: rgba(91,143,255,0.07);
+  --impact-border: rgba(91,143,255,0.22);
+  --impact-tag-bg: rgba(0,0,0,0.05);
+  --impact-tag-border: rgba(0,0,0,0.12);
+  --impact-tag-text: #2a3260;
+  --metric-bg: rgba(91,143,255,0.10);
+  --metric-border: rgba(91,143,255,0.28);
+  --stack-bg: rgba(91,143,255,0.08);
+  --stack-border: rgba(91,143,255,0.22);
+  --skill-bg: rgba(0,0,0,0.04);
+  --skill-border: rgba(0,0,0,0.09);
+  --skill-text: #3a4260;
+  --cert-bg: rgba(0,0,0,0.03);
+  --contact-bg: rgba(91,143,255,0.06);
+  --contact-border: rgba(91,143,255,0.22);
+  --nav-bg: rgba(240,244,255,0.80);
+  --nav-border: rgba(0,0,0,0.08);
+  --nav-link: #4a5280;
+  --nav-active-bg: rgba(91,143,255,0.10);
+  --footer-border: rgba(0,0,0,0.08);
+  --footer-text: #6b7090;
 }
 
 * {
@@ -19,14 +90,10 @@ html {
 
 body {
   font-family: "DM Sans", system-ui, sans-serif;
-  background: #060b18;
-  color: #e4e8f5;
+  background: var(--bg);
+  color: var(--text-primary);
   overflow-x: hidden;
-}
-
-body.light {
-  background: #f0f4ff;
-  color: #0d1226;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 ::selection {
@@ -34,19 +101,10 @@ body.light {
 }
 
 /* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background: rgba(91, 143, 255, 0.3);
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(91, 143, 255, 0.5);
-}
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(91,143,255,0.3); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(91,143,255,0.5); }
 
 /* Gradient text utility */
 .gradient-text {
@@ -61,4 +119,105 @@ body.light {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* ── THEME-AWARE COMPONENT CLASSES ── */
+
+/* Cards / surfaces */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition: border-color 0.28s, box-shadow 0.28s, background 0.3s;
+}
+.card:hover {
+  border-color: var(--border-hover);
+}
+
+/* Nav */
+nav {
+  background: var(--nav-bg) !important;
+  border-bottom-color: var(--nav-border) !important;
+}
+.nav-link {
+  color: var(--nav-link);
+}
+.nav-link:hover, .nav-link.active {
+  color: var(--text-primary);
+  background: var(--nav-active-bg);
+}
+
+/* Text */
+.text-primary  { color: var(--text-primary) !important; }
+.text-secondary { color: var(--text-secondary) !important; }
+.text-muted    { color: var(--text-muted) !important; }
+.text-body     { color: var(--text-body) !important; }
+
+/* Badges / tags */
+.badge {
+  background: var(--badge-bg);
+  border: 1px solid var(--badge-border);
+  color: var(--badge-text);
+}
+.metric-chip {
+  background: var(--metric-bg);
+  border: 1px solid var(--metric-border);
+  color: #5b8fff;
+}
+.stack-tag {
+  background: var(--stack-bg);
+  border: 1px solid var(--stack-border);
+  color: #5b8fff;
+}
+.skill-tag {
+  background: var(--skill-bg);
+  border: 1px solid var(--skill-border);
+  color: var(--skill-text);
+}
+.skill-tag:hover {
+  background: var(--metric-bg);
+  border-color: var(--metric-border);
+  color: var(--text-primary);
+}
+
+/* Impact strip */
+.impact-strip {
+  background: var(--impact-bg);
+  border: 1px solid var(--impact-border);
+}
+.impact-tag {
+  background: var(--impact-tag-bg);
+  border: 1px solid var(--impact-tag-border);
+  color: var(--impact-tag-text);
+}
+
+/* Contact box */
+.contact-box {
+  background: var(--contact-bg);
+  border: 1px solid var(--contact-border);
+}
+
+/* Footer */
+footer {
+  border-top-color: var(--footer-border) !important;
+}
+.footer-text {
+  color: var(--footer-text);
+}
+
+/* Section labels */
+.section-label { color: #5b8fff; }
+.section-title { color: var(--text-primary); }
+
+/* Bullet arrows */
+.bullet-arrow { color: #5b8fff; }
+
+/* Outline buttons in light mode */
+body.light .btn-outline {
+  background: rgba(0,0,0,0.04);
+  border-color: rgba(0,0,0,0.14);
+  color: var(--text-primary);
+}
+body.light .btn-outline:hover {
+  border-color: #5b8fff;
+  color: #5b8fff;
 }

@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Download } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { resume } from "@/lib/data";
 
 interface Props { open: boolean; onClose: () => void; }
@@ -11,6 +11,16 @@ export default function ResumeModal({ open, onClose }: Props) {
   const [prankIdx, setPrankIdx] = useState(0);
   const [prankText, setPrankText] = useState("click to reveal");
   const [pranking, setPranking] = useState(false);
+
+  // Lock body scroll when modal is open
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => { document.body.style.overflow = ""; };
+  }, [open]);
 
   const doPrank = () => {
     if (pranking) return;
@@ -46,9 +56,6 @@ export default function ResumeModal({ open, onClose }: Props) {
                 <h2 className="font-display font-extrabold text-3xl tracking-tight text-white mb-1">
                   {resume.name}
                 </h2>
-                <p className="text-sm text-[#a78bfa] italic mb-1.5">
-                  🏷️ aka <strong>Bagwitty</strong> — the name that stuck harder than any bug she ever fixed 🐛
-                </p>
                 <p className="text-sm text-[#5b8fff] font-medium mb-3">
                   Full Stack Developer | .NET · Angular · React · SQL
                 </p>
@@ -59,10 +66,6 @@ export default function ResumeModal({ open, onClose }: Props) {
                   <a href={resume.github} target="_blank" rel="noopener noreferrer" className="hover:text-[#5b8fff] transition-colors">⬡ GitHub</a>
                   <a href={resume.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-pink-500 transition-colors">📸 @ankita_bagwitty</a>
                   <a href={resume.twitter} target="_blank" rel="noopener noreferrer" className="hover:text-[#5b8fff] transition-colors">𝕏 @SheIsNotBoring</a>
-                  <button onClick={doPrank}
-                    className="hover:text-white transition-colors cursor-pointer border-b border-dashed border-white/25">
-                    📞 {prankText}
-                  </button>
                 </div>
               </div>
               <div className="flex gap-2 flex-shrink-0 items-start">
