@@ -1,3 +1,5 @@
+import { Tag } from "lucide-react";
+
 export const resume = {
   name: "Ankita Bhagawati",
   nickname: "Bagwitty",
@@ -65,6 +67,23 @@ export const resume = {
   ],
 
   projects: [
+      {
+      title: "Jabor- Assam Garbage Tracker",
+      date: "April 2026",
+      association: "",
+      description: "Jabor is an anonymous civic accountability app built for Assam.",
+      bullets: [
+      "Report garbage dumps with a photo",
+      "Tag their district and constituency",
+      "Automatically map complaints to the relevant MLA and MP",
+      "Create a permanent, public record of civic issues",
+      "View a live “Board of Shame” ranking representatives by reported problems",
+      "The platform aggregates citizen reports into actionable public data, increasing transparency and accountability at the local level.",
+      ],
+      stack: ["React", "React Hooks"],
+      github: "https://github.com/ankitaBhagawati/jabor-garbage-tracker",
+      demo: "https://jabor-garbage-tracker.vercel.app/",
+    },
         {
       title: "QR Code Generator",
       date: "Feb 2026",
